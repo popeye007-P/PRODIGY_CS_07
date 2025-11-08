@@ -21,7 +21,7 @@ A basic keylogger developed for educational purposes to record keystrokes and lo
 Each project is a standalone Python script. Ensure you have Python installed along with any necessary libraries (e.g., Password Complexity Checker.).
 
 Example to run:
-<img width="958" height="546" alt="image" src="https://github.com/user-attachments/assets/86c4b97e-1c00-4e3b-b279-c0b5b7ac1d15" />
+<img width="1261" height="465" alt="image" src="https://github.com/user-attachments/assets/a75ceb84-0e66-4ac9-a99d-ba9abdb45b02" />
 
 
 ## Ethical Considerations
